@@ -1,691 +1,1965 @@
 <!doctype html>
 <html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light">
-  <meta name="theme-color" content="#F6F7F6">
-  <meta name="description" content="Seguros claros, pólizas sin letra pequeña y una persona real al otro lado. Conoce Karla's Seguros.">
-  <meta property="og:title" content="Karla's Seguros — Tranquilidad, sin ruido.">
-  <meta property="og:description" content="Seguros claros y trato cercano para personas y familias.">
-  <title>Karla's Seguros — Tranquilidad, sin ruido.</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400,100,1;0,9..144,500,100,1;1,9..144,400,100,1;1,9..144,500,100,1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <style>
-    /* 01 — Fundamentos y tipografía */
-    :root {
-      color-scheme: light;
-      --paper: #F6F7F6;
-      --ink: #101214;
-      --muted: #474C52;
-      --soft: #5F646A;
-      --green: #1F3D3A;
-      --line: rgba(16, 18, 20, .16);
-      --serif: "Fraunces", Georgia, serif;
-      --body: "Libre Baskerville", Georgia, serif;
-      --ease: cubic-bezier(.22, 1, .36, 1);
-      --time: 950ms;
-      --gutter: clamp(20px, 6vw, 104px);
-      --content: 1320px;
-    }
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 90px; background: var(--paper); }
-    body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font: 400 13px/1.9 var(--body);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: clip;
-    }
-    ::selection { color: var(--paper); background: var(--green); }
-    a { color: inherit; text-decoration: none; }
-    button, input, select, textarea { font: inherit; }
-    button { color: inherit; }
-    svg { display: block; }
-    .skip-link {
-      position: fixed; z-index: 2000; top: 12px; left: 12px;
-      padding: 10px 14px; transform: translateY(-160%);
-      background: var(--green); color: var(--paper);
-    }
-    .skip-link:focus { transform: translateY(0); }
-    :focus-visible { outline: 2px solid var(--green); outline-offset: 5px; }
-    .container { width: min(var(--content), calc(100% - var(--gutter) * 2)); margin-inline: auto; }
-    .section { padding-block: clamp(6rem, 11vw, 11rem); }
-    .eyebrow {
-      margin: 0; color: var(--green); font-size: 9px;
-      letter-spacing: .2em; line-height: 1.7; text-transform: uppercase;
-    }
-    .heading {
-      max-width: 890px; margin: 20px 0 0;
-      font: 400 clamp(3rem, 7.4vw, 7rem)/.98 var(--serif);
-      letter-spacing: -.055em; font-variation-settings: "SOFT" 100, "WONK" 1;
-    }
-    .heading em, .hero-title em, .principle-statement em, .quote-text em { font-style: italic; }
-    .intro { max-width: 590px; color: var(--muted); }
-    .rule { height: 1px; background: var(--line); }
-    .reveal { opacity: 1; transform: none; }
-    .motion-ready .reveal {
-      opacity: 0; transform: translateY(20px);
-      transition: opacity var(--time) var(--ease), transform var(--time) var(--ease);
-    }
-    .motion-ready .reveal.is-visible { opacity: 1; transform: translateY(0); }
-    .delay-1 { transition-delay: 140ms !important; }
-    .delay-2 { transition-delay: 280ms !important; }
-    .button {
-      min-height: 53px; display: inline-flex; align-items: center; justify-content: center;
-      gap: 14px; padding: 0 22px; border: 1px solid var(--green);
-      background: var(--green); color: var(--paper); cursor: pointer;
-      font: 400 10px/1.5 var(--body); letter-spacing: .04em;
-      transition: color 700ms var(--ease), background 700ms var(--ease), transform 700ms var(--ease);
-    }
-    .button:hover { background: transparent; color: var(--green); }
-    .button svg, .inline-link svg { width: 15px; height: 15px; flex: 0 0 auto; transition: transform 700ms var(--ease); }
-    .button:hover svg, .inline-link:hover svg { transform: translateX(4px); }
-    .inline-link { display: inline-flex; align-items: center; gap: 10px; color: var(--green); font-size: 10px; }
-
-    /* 02 — Cabecera */
-    .site-header {
-      position: fixed; z-index: 1000; inset: 0 0 auto;
-      background: rgba(246, 247, 246, .91); backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px); transition: border-color 700ms var(--ease);
-      border-bottom: 1px solid transparent;
-    }
-    .site-header.scrolled { border-color: var(--line); }
-    .header-inner {
-      width: min(var(--content), calc(100% - var(--gutter) * 2)); height: 78px;
-      display: flex; align-items: center; justify-content: space-between; margin-inline: auto;
-    }
-    .brand { font: 500 20px/1 var(--serif); letter-spacing: -.045em; }
-    .main-nav { display: flex; align-items: center; gap: clamp(22px, 4vw, 58px); }
-    .main-nav a {
-      position: relative; color: var(--muted); font-size: 9px;
-      letter-spacing: .09em; transition: color 500ms var(--ease);
-    }
-    .main-nav a::after {
-      position: absolute; right: 0; bottom: -7px; left: 0; height: 1px;
-      content: ""; background: var(--green); transform: scaleX(0);
-      transform-origin: right; transition: transform 700ms var(--ease);
-    }
-    .main-nav a:hover { color: var(--green); }
-    .main-nav a:hover::after { transform: scaleX(1); transform-origin: left; }
-    .mobile-contact { display: none; }
-
-    /* 03 — Hero y entrada escalonada */
-    .hero { min-height: min(850px, 100svh); display: flex; align-items: center; padding-block: 130px 85px; }
-    .hero-inner { width: min(1050px, calc(100% - var(--gutter) * 2)); margin-inline: auto; }
-    .hero-label, .hero-title, .hero-copy, .hero-actions, .hero-rule, .hero-facts { opacity: 0; animation: settle 1100ms var(--ease) forwards; }
-    .hero-label { animation-delay: 120ms; }
-    .hero-title { animation-delay: 260ms; }
-    .hero-copy { animation-delay: 480ms; }
-    .hero-actions { animation-delay: 620ms; }
-    .hero-rule { animation: draw-rule 1300ms 780ms var(--ease) forwards; }
-    .hero-facts { animation-delay: 940ms; }
-    @keyframes settle { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes draw-rule { from { opacity: .5; transform: scaleX(0); transform-origin: left; } to { opacity: 1; transform: scaleX(1); transform-origin: left; } }
-    .hero-title {
-      max-width: 1000px; margin: 30px 0 24px;
-      font: 400 clamp(4.4rem, 12.8vw, 12.5rem)/.78 var(--serif);
-      letter-spacing: -.075em; font-variation-settings: "SOFT" 100, "WONK" 1;
-    }
-    .hero-line { display: block; width: fit-content; max-width: 100%; overflow: hidden; padding: .08em .06em .12em 0; }
-    .hero-line span { display: inline-block; animation: line-reveal 1300ms var(--ease) both; }
-    .hero-line:nth-child(2) span { animation-delay: 160ms; }
-    @keyframes line-reveal { from { opacity: 0; transform: translateY(105%); } to { opacity: 1; transform: translateY(0); } }
-    .hero-copy { max-width: 600px; margin: 0; color: var(--muted); font-size: clamp(12px, 1.2vw, 14px); line-height: 2; }
-    .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 27px; margin-top: 30px; }
-    .hero-actions .inline-link { min-height: 45px; }
-    .hero-rule { margin-top: clamp(54px, 8vw, 94px); }
-    .hero-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; padding-top: 20px; }
-    .hero-fact { display: flex; align-items: baseline; gap: 11px; color: var(--muted); font-size: 9px; line-height: 1.8; }
-    .hero-fact strong { flex: 0 0 auto; color: var(--green); font: 400 25px/1 var(--serif); letter-spacing: -.03em; }
-
-    /* 04 — Principios */
-    .principles { border-top: 1px solid var(--line); }
-    .principle-statement {
-      max-width: 1020px; margin: 0;
-      font: 400 clamp(2.7rem, 6.8vw, 6.4rem)/1.02 var(--serif);
-      letter-spacing: -.05em; font-variation-settings: "SOFT" 100, "WONK" 1;
-    }
-    .principle-statement em { color: var(--green); }
-    .principle-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(25px, 6vw, 90px); margin-top: clamp(60px, 9vw, 118px); }
-    .principle { padding-top: 17px; border-top: 1px solid var(--line); }
-    .principle h3 { margin: 0 0 11px; font: 500 25px/1.2 var(--serif); }
-    .principle p { max-width: 330px; margin: 0; color: var(--muted); font-size: 11px; }
-
-    /* 05 — Coberturas */
-    .coverages { background: #F1F3F1; }
-    .section-lead { display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 55px; }
-    .section-lead .heading { max-width: 720px; }
-    .section-lead .intro { max-width: 315px; margin: 0 0 5px; font-size: 11px; }
-    .coverage-list { border-top: 1px solid var(--line); }
-    .coverage-row {
-      width: 100%; min-height: 116px; display: grid;
-      grid-template-columns: minmax(150px, .65fr) minmax(220px, 1fr) 44px;
-      align-items: center; gap: 28px; padding: 20px 3px;
-      border: 0; border-bottom: 1px solid var(--line); background: transparent;
-      text-align: left; cursor: pointer;
-    }
-    .coverage-name { width: fit-content; font: 400 clamp(2rem, 4vw, 3.8rem)/1 var(--serif); letter-spacing: -.04em; transition: transform 800ms var(--ease), color 700ms var(--ease); }
-    .coverage-description { max-width: 450px; color: var(--muted); font-size: 10px; transition: color 700ms var(--ease); }
-    .coverage-arrow {
-      width: 37px; height: 37px; display: grid; place-items: center;
-      border: 1px solid var(--line); border-radius: 50%; color: var(--green);
-      opacity: .6; transform: translateX(-8px);
-      transition: opacity 700ms var(--ease), transform 700ms var(--ease), background 700ms var(--ease), color 700ms var(--ease);
-    }
-    .coverage-arrow svg { width: 15px; height: 15px; }
-    .coverage-row:hover .coverage-name, .coverage-row:focus-visible .coverage-name { transform: translateX(8px); color: var(--green); }
-    .coverage-row:hover .coverage-arrow, .coverage-row:focus-visible .coverage-arrow { opacity: 1; transform: translateX(0); background: var(--green); color: var(--paper); }
-
-    /* 06 — Planes de auto */
-    .plans-intro { max-width: 590px; margin: 18px 0 56px; color: var(--muted); font-size: 11px; }
-    .plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
-    .plan {
-      position: relative; padding: 29px clamp(18px, 3vw, 43px) 25px 0;
-      border-bottom: 1px solid var(--line);
-    }
-    .plan + .plan { padding-left: clamp(18px, 3vw, 43px); border-left: 1px solid var(--line); }
-    .plan.featured::before { position: absolute; top: -1px; right: 0; left: 0; height: 3px; content: ""; background: var(--green); }
-    .plan-label { min-height: 17px; color: var(--green); font-size: 8px; letter-spacing: .16em; text-transform: uppercase; }
-    .plan h3 { margin: 15px 0 7px; font: 400 clamp(2rem, 3.4vw, 3rem)/1.05 var(--serif); }
-    .plan-summary { min-height: 45px; margin: 0; color: var(--muted); font-size: 10px; }
-    .plan ul { display: grid; gap: 11px; margin: 28px 0 32px; padding: 0; list-style: none; }
-    .plan li { display: flex; gap: 9px; align-items: flex-start; color: var(--muted); font-size: 9px; line-height: 1.8; }
-    .plan li svg { width: 13px; height: 13px; flex: 0 0 13px; margin-top: 4px; color: var(--green); }
-    .plan .inline-link { font-size: 9px; }
-    .plan .inline-link svg { width: 13px; height: 13px; }
-
-    /* 07 — Asistencia */
-    .assistance { background: #F1F3F1; }
-    .assistance-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(45px, 10vw, 150px); align-items: start; }
-    .assistance-copy .heading { font-size: clamp(3.2rem, 7vw, 6.5rem); }
-    .assistance-phone-label { margin: 40px 0 5px; color: var(--soft); font-size: 9px; letter-spacing: .15em; text-transform: uppercase; }
-    .assistance-phone { color: var(--green); font: 400 clamp(1.8rem, 4vw, 3rem)/1.2 var(--serif); }
-    .assistance-note { margin-top: 14px; color: var(--soft); font-size: 9px; }
-    .service-list { border-top: 1px solid var(--line); }
-    .service-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; min-height: 58px; border-bottom: 1px solid var(--line); }
-    .service-row span { color: var(--muted); font-size: 10px; }
-    .service-row svg { width: 14px; height: 14px; color: var(--green); }
-
-    /* 08 — Método */
-    .method { overflow: hidden; }
-    .method-grid { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(22px, 5vw, 75px); margin-top: 70px; padding-top: 30px; }
-    .method-track { position: absolute; top: 0; right: 0; left: 0; height: 1px; background: var(--line); }
-    .method-track::after { position: absolute; inset: 0; content: ""; background: var(--green); transform: scaleX(0); transform-origin: left; transition: transform 1600ms var(--ease); }
-    .method-grid.is-visible .method-track::after { transform: scaleX(1); }
-    .method-step { position: relative; }
-    .method-number { display: block; margin-bottom: 34px; color: var(--green); font: 400 17px/1 var(--serif); }
-    .method-step h3 { margin: 0 0 10px; font: 400 clamp(1.8rem, 3vw, 2.65rem)/1.1 var(--serif); }
-    .method-step p { max-width: 330px; min-height: 44px; margin: 0; color: var(--muted); font-size: 10px; }
-    .method-duration { display: block; margin-top: 22px; color: var(--soft); font-size: 8px; letter-spacing: .13em; text-transform: uppercase; }
-
-    /* 09 — Cita de marca */
-    .quote-section { padding-block: clamp(6rem, 13vw, 13rem); border-block: 1px solid var(--line); background: #F1F3F1; }
-    .quote-inner { width: min(1000px, calc(100% - var(--gutter) * 2)); margin-inline: auto; }
-    .quote-text { margin: 0; font: 400 clamp(2.6rem, 6.8vw, 6.2rem)/1.02 var(--serif); letter-spacing: -.05em; font-variation-settings: "SOFT" 100, "WONK" 1; }
-    .quote-text em { color: var(--green); }
-    .quote-attribution { display: block; margin-top: 30px; color: var(--muted); font-size: 8px; letter-spacing: .16em; text-transform: uppercase; }
-
-    /* 10 — Contacto y formulario */
-    .contact-layout { display: grid; grid-template-columns: .82fr 1.18fr; gap: clamp(45px, 10vw, 150px); }
-    .contact-intro { max-width: 460px; color: var(--muted); font-size: 11px; }
-    .contact-details { margin-top: 43px; border-top: 1px solid var(--line); }
-    .contact-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 14px; min-height: 77px; border-bottom: 1px solid var(--line); }
-    .contact-item-label { display: block; color: var(--soft); font-size: 8px; letter-spacing: .14em; text-transform: uppercase; }
-    .contact-item-value { display: block; margin-top: 3px; color: var(--ink); font-size: 10px; overflow-wrap: anywhere; }
-    .copy-button { padding: 7px 0 7px 8px; border: 0; background: transparent; color: var(--green); cursor: pointer; font-size: 8px; }
-    .copy-button:hover { text-decoration: underline; text-underline-offset: 4px; }
-    .copy-status { min-height: 20px; margin: 10px 0 0; color: var(--green); font-size: 9px; }
-    .contact-form { display: grid; gap: 27px; }
-    .field label { display: block; margin-bottom: 7px; color: var(--muted); font-size: 9px; letter-spacing: .04em; }
-    .field input, .field select, .field textarea {
-      width: 100%; padding: 9px 0 12px; border: 0; border-bottom: 1px solid rgba(16,18,20,.27);
-      border-radius: 0; background: transparent; color: var(--ink);
-      font: 400 11px/1.8 var(--body); outline: 0;
-      transition: border-color 700ms var(--ease);
-    }
-    .field select { appearance: none; cursor: pointer; }
-    .field select option { background: var(--paper); color: var(--ink); }
-    .field textarea { min-height: 90px; resize: vertical; }
-    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--green); }
-    .field input::placeholder, .field textarea::placeholder { color: var(--soft); opacity: .8; }
-    .field-error { display: none; margin-top: 5px; color: #474C52; font-size: 9px; }
-    .field.invalid .field-error { display: block; }
-    .field.invalid input, .field.invalid select, .field.invalid textarea { border-color: var(--muted); }
-    .form-error { min-height: 21px; margin: -14px 0 0; color: var(--muted); font-size: 9px; }
-    .form-submit { justify-self: start; min-width: 190px; }
-    .form-success { display: none; padding: 28px 0; }
-    .form-success.visible { display: block; }
-    .form-success svg { width: 42px; height: 42px; margin-bottom: 20px; color: var(--green); }
-    .form-success svg path { stroke-dasharray: 36; stroke-dashoffset: 36; }
-    .form-success.visible svg path { animation: check-draw 1100ms var(--ease) forwards; }
-    @keyframes check-draw { to { stroke-dashoffset: 0; } }
-    .form-success h3 { margin: 0 0 8px; font: 400 32px/1.1 var(--serif); }
-    .form-success p { max-width: 420px; color: var(--muted); font-size: 10px; }
-
-    /* 11 — Pie */
-    .site-footer { padding-block: 28px; border-top: 1px solid var(--line); }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 22px; }
-    .footer-brand { font: 500 16px/1 var(--serif); }
-    .footer-legal { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 12px 24px; color: var(--soft); font-size: 8px; }
-    .footer-legal a:hover { color: var(--green); text-decoration: underline; text-underline-offset: 4px; }
-    .privacy-details { position: relative; }
-    .privacy-details summary { cursor: pointer; }
-    .privacy-details p { max-width: 300px; margin: 8px 0 0; line-height: 1.8; }
-
-    /* 12 — Adaptación responsive */
-    @media (min-width: 1500px) { .hero-title { font-size: 12.5rem; } }
-    @media (max-width: 760px) {
-      :root { --gutter: 24px; }
-      .header-inner { height: 68px; }
-      .desktop-nav { display: none; }
-      .mobile-contact { display: inline-flex; padding: 8px 0 8px 12px; color: var(--green); font-size: 9px; }
-      .hero { min-height: auto; padding-block: 155px 75px; }
-      .hero-title { font-size: clamp(4.3rem, 16.5vw, 8rem); }
-      .hero-facts { grid-template-columns: 1fr; gap: 13px; }
-      .hero-fact { font-size: 9px; }
-      .principle-grid { grid-template-columns: 1fr; gap: 25px; margin-top: 48px; }
-      .section-lead { display: block; margin-bottom: 36px; }
-      .section-lead .intro { margin-top: 17px; }
-      .coverage-row { grid-template-columns: minmax(0, 1fr) 38px; gap: 4px 14px; min-height: 105px; padding-block: 17px; }
-      .coverage-name { grid-column: 1; grid-row: 1; }
-      .coverage-description { grid-column: 1; grid-row: 2; }
-      .coverage-arrow { grid-column: 2; grid-row: 1 / span 2; width: 34px; height: 34px; opacity: 1; transform: none; }
-      .coverage-name { font-size: clamp(2rem, 8vw, 3rem); }
-      .plan-grid { grid-template-columns: 1fr; }
-      .plan, .plan + .plan { padding: 26px 0 29px; border-left: 0; }
-      .plan + .plan { border-top: 1px solid var(--line); }
-      .plan.featured::before { right: -24px; left: -24px; }
-      .plan-summary { min-height: 0; }
-      .plan ul { margin-block: 20px 24px; }
-      .assistance-layout, .contact-layout { grid-template-columns: 1fr; gap: 52px; }
-      .assistance-copy .heading { font-size: clamp(3.8rem, 13vw, 6rem); }
-      .method-grid { grid-template-columns: 1fr; gap: 37px; margin-top: 50px; padding: 0 0 0 24px; }
-      .method-track { top: 0; bottom: 0; left: 5px; width: 1px; height: auto; }
-      .method-track::after { transform: scaleY(0); transform-origin: top; }
-      .method-grid.is-visible .method-track::after { transform: scaleY(1); }
-      .method-number { margin-bottom: 12px; }
-      .method-step p { min-height: 0; }
-      .method-duration { margin-top: 12px; }
-      .quote-attribution { line-height: 1.8; }
-      .footer-inner { align-items: flex-start; flex-direction: column; }
-      .footer-legal { justify-content: flex-start; }
-    }
-    @media (max-width: 390px) {
-      :root { --gutter: 18px; }
-      .hero-title { font-size: 4.15rem; }
-      .hero-actions { align-items: flex-start; flex-direction: column; gap: 13px; }
-      .hero-actions .inline-link { min-height: 34px; }
-      .contact-item { grid-template-columns: minmax(0, 1fr) auto; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important; animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important; transition-duration: .01ms !important;
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#080F20" />
+    <meta
+      name="description"
+      content="PrimeTrust Insurance: seguros claros, asesoría en español e inglés y acompañamiento para personas, familias y negocios en Utah."
+    />
+    <title>PrimeTrust Insurance</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap"
+    />
+    <script>
+      document.documentElement.lang = "es";
+      if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.documentElement.classList.add("js");
+        /* Si el script principal falla, la página se muestra completa y sin animaciones */
+        setTimeout(function () {
+          if (!window.__karla) document.documentElement.classList.remove("js");
+        }, 5000);
       }
-      .motion-ready .reveal { opacity: 1; transform: none; }
-      .hero-label, .hero-title, .hero-copy, .hero-actions, .hero-rule, .hero-facts, .hero-line span { opacity: 1; transform: none; animation: none; }
-    }
-  </style>
-</head>
-<body>
-  <a class="skip-link" href="#contenido">Saltar al contenido</a>
-
-  <!-- Cabecera -->
-  <header class="site-header" id="site-header">
-    <div class="header-inner">
-      <a class="brand" href="#inicio" aria-label="Karla's Seguros, inicio">Karla's</a>
-      <nav class="main-nav desktop-nav" aria-label="Navegación principal">
-        <a href="#coberturas">Coberturas</a>
-        <a href="#planes">Planes</a>
-        <a href="#metodo">Método</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-      <a class="mobile-contact" href="#contacto">Contacto <span aria-hidden="true">↗</span></a>
-    </div>
-  </header>
-
-  <main id="contenido">
-    <!-- Hero -->
-    <section class="hero" id="inicio" aria-labelledby="hero-title">
-      <div class="hero-inner">
-        <p class="eyebrow hero-label">Seguros explicados como deben ser</p>
-        <h1 class="hero-title" id="hero-title">
-          <span class="hero-line"><span>Tranquilidad,</span></span>
-          <span class="hero-line"><span><em>sin ruido.</em></span></span>
-        </h1>
-        <p class="hero-copy">Seguros claros, pólizas sin letra pequeña y una persona real al otro lado. Para que sepas qué tienes y quién está contigo.</p>
-        <div class="hero-actions">
-          <a class="button" href="#contacto">Hablar con Karla <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m-4-4 4 4-4 4" stroke="currentColor"/></svg></a>
-          <a class="inline-link" href="#coberturas">Ver coberturas <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m-4-4 4 4-4 4" stroke="currentColor"/></svg></a>
-        </div>
-        <div class="rule hero-rule" aria-hidden="true"></div>
-        <div class="hero-facts" aria-label="Nuestro compromiso">
-          <div class="hero-fact"><strong>2 h</strong><span>Primera respuesta ante un siniestro*</span></div>
-          <div class="hero-fact"><strong>1</strong><span>Persona asignada para acompañarte</span></div>
-          <div class="hero-fact"><strong>0</strong><span>Cláusulas que dejamos sin explicar</span></div>
-        </div>
-        <p class="assistance-note">*Tiempo estimado de respuesta inicial; puede variar según el caso y horario.</p>
-      </div>
-    </section>
-
-    <!-- Principios -->
-    <section class="section principles" aria-labelledby="principles-title">
-      <div class="container">
-        <p class="eyebrow reveal">Lo que puedes esperar</p>
-        <h2 class="principle-statement reveal" id="principles-title">Un buen seguro debería darte <em>claridad</em>, no más preguntas.</h2>
-        <div class="principle-grid">
-          <article class="principle reveal"><h3>Claridad</h3><p>Te explicamos lo importante en palabras sencillas. Si algo no queda claro, lo conversamos.</p></article>
-          <article class="principle reveal delay-1"><h3>Cercanía</h3><p>Hablas con una persona que conoce tu caso, te escucha y te acompaña de verdad.</p></article>
-          <article class="principle reveal delay-2"><h3>Cumplimiento</h3><p>Revisamos juntos alcances, límites y exclusiones antes de que tomes una decisión.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Coberturas -->
-    <section class="section coverages" id="coberturas" aria-labelledby="coverage-title">
-      <div class="container">
-        <div class="section-lead">
-          <div><p class="eyebrow reveal">Lo que importa, protegido</p><h2 class="heading reveal" id="coverage-title">Coberturas para<br><em>tu vida real.</em></h2></div>
-          <p class="intro reveal delay-1">Elige lo que quieres proteger. Te contamos qué incluye cada opción y qué conviene revisar.</p>
-        </div>
-        <div class="coverage-list">
-          <button class="coverage-row reveal" type="button" data-coverage="Vida"><span class="coverage-name">Vida</span><span class="coverage-description">Respaldo para quienes más quieres y tranquilidad para planear a futuro.</span><span class="coverage-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M2 8h11m-4-4 4 4-4 4" stroke="currentColor"/></svg></span></button>
-          <button class="coverage-row reveal" type="button" data-coverage="Salud"><span class="coverage-name">Salud</span><span class="coverage-description">Opciones para cuidar de ti y tu familia, con atención acorde a tus necesidades.</span><span class="coverage-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M2 8h11m-4-4 4 4-4 4" stroke="currentColor"/></svg></span></button>
-          <button class="coverage-row reveal" type="button" data-coverage="Hogar"><span class="coverage-name">Hogar</span><span class="coverage-description">Protección para tu casa y tus pertenencias ante imprevistos cotidianos.</span><span class="coverage-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M2 8h11m-4-4 4 4-4 4" stroke="currentColor"/></svg></span></button>
-          <button class="coverage-row reveal" type="button" data-coverage="Auto"><span class="coverage-name">Auto</span><span class="coverage-description">Alternativas para tu vehículo, asistencia vial y apoyo si ocurre un accidente.</span><span class="coverage-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M2 8h11m-4-4 4 4-4 4" stroke="currentColor"/></svg></span></button>
-          <button class="coverage-row reveal" type="button" data-coverage="Negocio"><span class="coverage-name">Negocio</span><span class="coverage-description">Soluciones para cuidar tu operación, tus bienes y la continuidad de tu trabajo.</span><span class="coverage-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M2 8h11m-4-4 4 4-4 4" stroke="currentColor"/></svg></span></button>
-          <button class="coverage-row reveal" type="button" data-coverage="Viajes"><span class="coverage-name">Viajes</span><span class="coverage-description">Asistencia ante contratiempos para que viajes con mayor tranquilidad.</span><span class="coverage-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M2 8h11m-4-4 4 4-4 4" stroke="currentColor"/></svg></span></button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Planes de auto -->
-    <section class="section plans" id="planes" aria-labelledby="plans-title">
-      <div class="container">
-        <p class="eyebrow reveal">Protección para tu camino</p>
-        <h2 class="heading reveal" id="plans-title">Tres formas de cuidar<br><em>tu auto.</em></h2>
-        <p class="plans-intro reveal">El nombre y alcance de los planes son orientativos. La cobertura, deducibles y condiciones dependen de la póliza que revisaremos contigo.</p>
-        <div class="plan-grid">
-          <article class="plan reveal">
-            <div class="plan-label" aria-hidden="true">&nbsp;</div>
-            <h3>Esencial</h3><p class="plan-summary">Lo necesario para manejar con respaldo.</p>
-            <ul>
-              <li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor"/></svg>Responsabilidad civil a terceros</li>
-              <li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor"/></svg>Asistencia vial básica</li>
-              <li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor"/></svg>Defensa y orientación legal</li>
-            </ul>
-            <a class="inline-link quote-plan" href="#contacto" data-plan="Esencial">Cotizar este plan <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m-4-4 4 4-4 4" stroke="currentColor"/></svg></a>
-          </article>
-          <article class="plan featured reveal delay-1">
-            <div class="plan-label">Más elegido</div>
-            <h3>Completo</h3><p class="plan-summary">Un respaldo más amplio para tus trayectos.</p>
-            <ul>
-              <li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor"/></svg>Responsabilidad civil a terceros</li>
-              <li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor"/></svg>Daños materiales y robo, sujeto a condiciones</li>
-              <li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor"/></svg>Asistencia vial ampliada</li>
-              <li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor"/></svg>Orientación legal</li>
-            </ul>
-            <a class="inline-link quote-plan" href="#contacto" data-plan="Completo">Cotizar este plan <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m-4-4 4 4-4 4" stroke="currentColor"/></svg></a>
-          </article>
-          <article class="plan reveal delay-2">
-            <div class="plan-label" aria-hidden="true">&nbsp;</div>
-            <h3>Total</h3><p class="plan-summary">Más servicios para una protección integral.</p>
-            <ul>
-              <li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor"/></svg>Responsabilidad civil a terceros</li>
-              <li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor"/></svg>Daños materiales y robo, sujeto a condiciones</li>
-              <li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor"/></svg>Asistencia vial ampliada y auto sustituto, si aplica</li>
-              <li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor"/></svg>Orientación y defensa legal</li>
-            </ul>
-            <a class="inline-link quote-plan" href="#contacto" data-plan="Total">Cotizar este plan <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m-4-4 4 4-4 4" stroke="currentColor"/></svg></a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Asistencia 24/7 -->
-    <section class="section assistance" aria-labelledby="assistance-title">
-      <div class="container assistance-layout">
-        <div class="assistance-copy">
-          <p class="eyebrow reveal">A tu lado en el camino</p>
-          <h2 class="heading reveal" id="assistance-title">Asistencia<br><em>cuando la necesitas.</em></h2>
-          <p class="intro reveal">La disponibilidad y los servicios dependen de la cobertura contratada. Confírmalos en las condiciones de tu póliza.</p>
-          <p class="assistance-phone-label reveal">Línea de ejemplo · atención 24/7 sujeta a contratación</p>
-          <a class="assistance-phone reveal" href="tel:+525555501234">+52 55 5550 1234</a>
-          <p class="assistance-note reveal">Número demostrativo; no corresponde a una línea activa.</p>
-        </div>
-        <div class="service-list reveal" aria-label="Servicios de asistencia disponibles según póliza">
-          <div class="service-row"><span>Grúa</span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor"/></svg></div>
-          <div class="service-row"><span>Cambio de llanta</span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor"/></svg></div>
-          <div class="service-row"><span>Paso de corriente</span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor"/></svg></div>
-          <div class="service-row"><span>Combustible de emergencia</span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor"/></svg></div>
-          <div class="service-row"><span>Cerrajería</span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor"/></svg></div>
-          <div class="service-row"><span>Ambulancia</span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor"/></svg></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Método -->
-    <section class="section method" id="metodo" aria-labelledby="method-title">
-      <div class="container">
-        <p class="eyebrow reveal">Sin vueltas ni letra pequeña</p>
-        <h2 class="heading reveal" id="method-title">Así de sencillo<br><em>debería ser.</em></h2>
-        <div class="method-grid" id="method-grid">
-          <div class="method-track" aria-hidden="true"></div>
-          <article class="method-step reveal"><span class="method-number">01</span><h3>Conversamos</h3><p>Me cuentas qué necesitas y qué quieres proteger. Sin compromiso.</p><span class="method-duration">Primera charla · 15–20 min</span></article>
-          <article class="method-step reveal delay-1"><span class="method-number">02</span><h3>Te proponemos</h3><p>Revisamos opciones, alcances, exclusiones y costos antes de decidir.</p><span class="method-duration">Propuesta · según tu caso</span></article>
-          <article class="method-step reveal delay-2"><span class="method-number">03</span><h3>Te acompañamos</h3><p>Si eliges avanzar, te ayudamos a entender tu póliza y los siguientes pasos.</p><span class="method-duration">Acompañamiento · continuo</span></article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Cita: compromiso de marca, no testimonio de cliente -->
-    <section class="quote-section" aria-label="Nuestro compromiso">
-      <div class="quote-inner reveal">
-        <p class="eyebrow">Nuestro compromiso</p>
-        <blockquote class="quote-text">“No tienes que saber de seguros. <em>Nos toca explicarlos bien.</em>”</blockquote>
-        <span class="quote-attribution">La forma de trabajar de Karla's Seguros</span>
-      </div>
-    </section>
-
-    <!-- Contacto -->
-    <section class="section contact" id="contacto" aria-labelledby="contact-title">
-      <div class="container contact-layout">
-        <div>
-          <p class="eyebrow reveal">Hablemos con calma</p>
-          <h2 class="heading reveal" id="contact-title">Empieza por<br><em>una pregunta.</em></h2>
-          <p class="contact-intro reveal">Cuéntame qué necesitas. Te respondo con claridad y vemos juntos si puedo ayudarte.</p>
-          <div class="contact-details reveal">
-            <div class="contact-item">
-              <div><span class="contact-item-label">Teléfono</span><a class="contact-item-value" href="tel:+525555501234">+52 55 5550 1234</a></div>
-              <button class="copy-button" type="button" data-copy="+52 55 5550 1234">Copiar</button>
-            </div>
-            <div class="contact-item">
-              <div><span class="contact-item-label">Correo</span><a class="contact-item-value" href="mailto:hola@karlasseguros.example">hola@karlasseguros.example</a></div>
-              <button class="copy-button" type="button" data-copy="hola@karlasseguros.example">Copiar</button>
-            </div>
-            <div class="contact-item">
-              <div><span class="contact-item-label">Horario · hora del centro de México</span><span class="contact-item-value">Lun–vie, 9:00–18:00</span></div>
-              <button class="copy-button" type="button" data-copy="Lunes a viernes, de 9:00 a 18:00, hora del centro de México">Copiar</button>
-            </div>
-          </div>
-          <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
-        </div>
-
-        <div class="reveal">
-          <form class="contact-form" id="contact-form" novalidate>
-            <div class="field">
-              <label for="name">Tu nombre</label>
-              <input id="name" name="name" type="text" autocomplete="name" required minlength="2" aria-describedby="name-error">
-              <span class="field-error" id="name-error"></span>
-            </div>
-            <div class="field">
-              <label for="email">Tu correo electrónico</label>
-              <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error">
-              <span class="field-error" id="email-error"></span>
-            </div>
-            <div class="field">
-              <label for="phone">Tu teléfono <span>(opcional)</span></label>
-              <input id="phone" name="phone" type="tel" autocomplete="tel" aria-describedby="phone-error">
-              <span class="field-error" id="phone-error"></span>
-            </div>
-            <div class="field">
-              <label for="insurance">¿Qué quieres proteger?</label>
-              <select id="insurance" name="insurance" required aria-describedby="insurance-error">
-                <option value="" selected disabled>Elige una opción</option>
-                <option>Vida</option><option>Salud</option><option>Hogar</option>
-                <option>Auto</option><option>Negocio</option><option>Viajes</option>
-                <option>Quiero orientación</option>
-              </select>
-              <span class="field-error" id="insurance-error"></span>
-            </div>
-            <div class="field">
-              <label for="message">Cuéntame un poco más <span>(opcional)</span></label>
-              <textarea id="message" name="message" rows="3" placeholder="¿Qué te gustaría saber?"></textarea>
-            </div>
-            <p class="form-error" id="form-error" role="alert" aria-live="assertive"></p>
-            <button class="button form-submit" type="submit">Enviar consulta <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m-4-4 4 4-4 4" stroke="currentColor"/></svg></button>
-          </form>
-          <div class="form-success" id="form-success" role="status" aria-live="polite" tabindex="-1">
-            <svg viewBox="0 0 44 44" fill="none" aria-hidden="true"><circle cx="22" cy="22" r="19" stroke="currentColor"/><path d="m12 22 7 7 14-15" stroke="currentColor" stroke-width="1.5"/></svg>
-            <h3>Gracias por escribir.</h3>
-            <p>Este formulario es una demostración y no envía tus datos. Para recibir consultas, hace falta conectarlo a un servicio de correo o servidor.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Pie de página -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <a class="footer-brand" href="#inicio">Karla's Seguros</a>
-      <div class="footer-legal">
-        <span>Sitio demostrativo · Coberturas y datos de ejemplo.</span>
-        <details class="privacy-details" id="privacidad">
-          <summary>Aviso de privacidad</summary>
-          <p>Este sitio es una demostración. El formulario no envía ni almacena datos. Antes de publicarlo, añade el aviso de privacidad aplicable y conecta el formulario a un servicio seguro.</p>
-        </details>
-        <span>© <span id="year">2026</span> Karla's Seguros</span>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    (() => {
-      "use strict";
-      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-      // Apariciones progresivas: si falla JavaScript, el contenido permanece visible.
-      const revealElements = document.querySelectorAll(".reveal");
-      const methodGrid = document.getElementById("method-grid");
-      if (!reducedMotion && "IntersectionObserver" in window) {
-        const observer = new IntersectionObserver((entries, currentObserver) => {
-          entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add("is-visible");
-            currentObserver.unobserve(entry.target);
-          });
-        }, { threshold: 0.12, rootMargin: "0px 0px -30px 0px" });
-        revealElements.forEach(element => observer.observe(element));
-        observer.observe(methodGrid);
-        document.body.classList.add("motion-ready");
-        document.querySelectorAll(".hero .reveal").forEach(element => element.classList.add("is-visible"));
-      } else {
-        revealElements.forEach(element => element.classList.add("is-visible"));
-        methodGrid.classList.add("is-visible");
+    </script>
+    <style>
+      /* =====================================================================
+   CONCEPTO
+   Una sola columna de tipografía grande sobre mucho vacío. El serif de
+   un solo trazo hace de protagonista; las coberturas son una lista de
+   nombres, no tarjetas. Un único acento verde profundo, líneas de 1px
+   y nada más. El movimiento se concentra en la apertura del titular.
+   ===================================================================== */
+      :root {
+        --bg: #080f20;
+        --surface: #0e1830;
+        --ink: #ece8df;
+        --soft: #b4bbcb;
+        --muted: #8a94aa;
+        --accent: #d1b98a;
+        --accent2: #9db6da;
+        --on-accent: #080f20;
+        --line: rgba(236, 232, 223, 0.1);
+        --line-strong: rgba(236, 232, 223, 0.28);
+        --err: #f2a394;
+        --serif:
+          "Bodoni Moda", "Bodoni 72", Didot, "Didot LT STD", Georgia,
+          "Times New Roman", serif;
+        --text: var(--serif);
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      /* Diseño de un solo tema: azul marino oscuro, sin importar el modo del dispositivo */
+      :root {
+        color-scheme: dark;
+      }
+      ::selection {
+        background: var(--accent);
+        color: var(--on-accent);
       }
 
-      // Cabecera con separador al comenzar el desplazamiento.
-      const header = document.getElementById("site-header");
-      const updateHeader = () => header.classList.toggle("scrolled", window.scrollY > 12);
-      window.addEventListener("scroll", updateHeader, { passive: true });
-      updateHeader();
+      /* ---------- Base ---------- */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font: 400 1.05rem/1.9 var(--text);
+        font-optical-sizing: auto;
+        letter-spacing: 0.01em;
+        overflow-x: clip;
+        -webkit-font-smoothing: antialiased;
+      }
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        font-family: var(--serif);
+        font-weight: 400;
+        line-height: 1.08;
+        letter-spacing: -0.01em;
+        text-wrap: balance;
+      }
+      p {
+        margin: 0;
+        text-wrap: pretty;
+      }
+      ul,
+      ol,
+      dl,
+      dd,
+      figure,
+      blockquote {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button {
+        font: inherit;
+        color: inherit;
+        background: none;
+        border: 0;
+        padding: 0;
+        cursor: pointer;
+      }
+      em {
+        font-style: italic;
+        color: var(--accent);
+      }
+      /* Legibilidad de Bodoni en tamaños pequeños: algo más de cuerpo en etiquetas, menú y botones */
+      .label,
+      .nav a,
+      .btn,
+      .link,
+      .copy,
+      .field label {
+        font-weight: 500;
+      }
+      /* Bodoni Moda: contraste extremo entre trazos gruesos y finos; el tamaño óptico se ajusta solo */
+      h1,
+      h2,
+      h3,
+      .big,
+      .mark,
+      .facts dt,
+      .details dd,
+      .quote blockquote,
+      .quote .stmt,
+      .goal-t {
+        font-optical-sizing: auto;
+      }
+      :focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 5px;
+      }
+      .skip {
+        position: fixed;
+        left: 1rem;
+        top: 1rem;
+        z-index: 100;
+        padding: 0.8rem 1.2rem;
+        background: var(--accent);
+        color: var(--on-accent);
+        font: 500 0.85rem var(--text);
+        transform: translateY(-220%);
+      }
+      .skip:focus {
+        transform: none;
+      }
 
-      // Coberturas: preselección del tipo de seguro.
-      const insurance = document.getElementById("insurance");
-      const message = document.getElementById("message");
-      const chooseCoverage = name => {
-        insurance.value = name;
-        insurance.dispatchEvent(new Event("change", { bubbles: true }));
-      };
-      document.querySelectorAll("[data-coverage]").forEach(button => {
-        button.addEventListener("click", () => {
-          chooseCoverage(button.dataset.coverage);
-          document.getElementById("contacto").scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth" });
-          window.setTimeout(() => insurance.focus({ preventScroll: true }), reducedMotion ? 0 : 550);
-        });
-      });
-      document.querySelectorAll(".quote-plan").forEach(link => {
-        link.addEventListener("click", () => {
-          chooseCoverage("Auto");
-          const planText = `Me interesa cotizar el plan ${link.dataset.plan}.`;
-          message.value = message.value.trim() ? `${message.value.trim()}\n${planText}` : planText;
-        });
-      });
+      .wrap {
+        width: min(1200px, 100%);
+        margin-inline: auto;
+        padding-inline: clamp(1rem, 5vw, 3.5rem);
+      }
+      .section {
+        padding-block: clamp(6.5rem, 15vw, 13rem);
+        scroll-margin-top: 3rem;
+      }
+      .label {
+        font: 400 0.62rem/1.6 var(--text);
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .row {
+        display: grid;
+        grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
+        gap: 1.5rem clamp(2rem, 5vw, 5rem);
+      }
+      h2 {
+        font-size: clamp(2.3rem, 5.2vw, 4.4rem);
+      }
+      .big {
+        font: 400 clamp(1.7rem, 3.2vw, 2.5rem)/1.3 var(--serif);
+        letter-spacing: -0.01em;
+        max-width: 26ch;
+        text-wrap: balance;
+      }
+      .lead {
+        color: var(--soft);
+        max-width: 34rem;
+      }
 
-      // Copia datos de ejemplo al portapapeles y comunica el resultado.
-      const copyStatus = document.getElementById("copy-status");
-      document.querySelectorAll("[data-copy]").forEach(button => {
-        button.addEventListener("click", async () => {
-          const text = button.dataset.copy;
-          try {
-            await navigator.clipboard.writeText(text);
-            copyStatus.textContent = "Dato copiado al portapapeles.";
-          } catch {
-            const temporaryInput = document.createElement("textarea");
-            temporaryInput.value = text;
-            temporaryInput.setAttribute("readonly", "");
-            temporaryInput.style.position = "fixed";
-            temporaryInput.style.opacity = "0";
-            document.body.append(temporaryInput);
-            temporaryInput.select();
-            const copied = document.execCommand("copy");
-            temporaryInput.remove();
-            copyStatus.textContent = copied
-              ? "Dato copiado al portapapeles."
-              : "No se pudo copiar automáticamente. Selecciona y copia el dato manualmente.";
-          }
-        });
-      });
+      /* ---------- Revelado al hacer scroll ---------- */
+      .js .rv {
+        opacity: 0;
+        transform: translateY(12px);
+        transition:
+          opacity 1.7s var(--ease) var(--d, 0s),
+          transform 1.7s var(--ease) var(--d, 0s);
+      }
+      .js .rv.in {
+        opacity: 1;
+        transform: none;
+      }
 
-      // Validación accesible con mensajes concretos en español.
-      const form = document.getElementById("contact-form");
-      const formError = document.getElementById("form-error");
-      const successPanel = document.getElementById("form-success");
-      const rules = [
-        { field: document.getElementById("name"), error: document.getElementById("name-error"), message: "Escribe tu nombre (al menos 2 caracteres)." },
-        { field: document.getElementById("email"), error: document.getElementById("email-error"), message: "Escribe un correo electrónico válido." },
-        { field: insurance, error: document.getElementById("insurance-error"), message: "Elige el tipo de seguro que te interesa." }
-      ];
-      const validateRule = rule => {
-        const valid = rule.field.checkValidity() && rule.field.value.trim() !== "";
-        rule.field.closest(".field").classList.toggle("invalid", !valid);
-        rule.error.textContent = valid ? "" : rule.message;
-        return valid;
-      };
-      rules.forEach(rule => {
-        rule.field.addEventListener("input", () => validateRule(rule));
-        rule.field.addEventListener("change", () => validateRule(rule));
-      });
-      form.addEventListener("submit", event => {
-        event.preventDefault();
-        formError.textContent = "";
-        const invalidRules = rules.filter(rule => !validateRule(rule));
-        if (invalidRules.length) {
-          formError.textContent = "Revisa los campos indicados antes de continuar.";
-          invalidRules[0].field.focus();
-          return;
+      /* ---------- Botones y enlaces ---------- */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.15rem 2rem;
+        background: transparent;
+        color: var(--accent);
+        border: 1px solid var(--accent);
+        font: 400 0.66rem/1 var(--text);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        transition:
+          background 0.5s var(--ease),
+          color 0.5s var(--ease);
+      }
+      .btn svg {
+        width: 1rem;
+        height: 1rem;
+        transition: transform 0.6s var(--ease);
+      }
+      .btn:hover {
+        background: var(--accent);
+        color: var(--on-accent);
+      }
+      .btn:hover svg {
+        transform: translateX(5px);
+      }
+      .link {
+        padding-bottom: 0.3rem;
+        border-bottom: 1px solid var(--line-strong);
+        font: 400 0.66rem/1.2 var(--text);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        transition:
+          border-color 0.5s,
+          color 0.5s;
+      }
+      .link:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      /* ---------- Cabecera ---------- */
+      .hdr {
+        position: sticky;
+        top: env(safe-area-inset-top, 0px);
+        z-index: 20;
+        background: var(--bg);
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.6s;
+      }
+      @supports (background: color-mix(in srgb, red 50%, transparent)) {
+        .hdr {
+          background: color-mix(in srgb, var(--bg) 84%, transparent);
+          -webkit-backdrop-filter: blur(14px);
+          backdrop-filter: blur(14px);
         }
-        form.hidden = true;
-        successPanel.classList.add("visible");
-        successPanel.focus();
-      });
+      }
+      .hdr.scrolled {
+        border-bottom-color: var(--line);
+      }
+      .hdr-in {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        padding-block: 1.3rem;
+      }
+      .mark {
+        font: 400 1.75rem/1 var(--serif);
+        letter-spacing: -0.01em;
+      }
+      .mark small {
+        margin-left: 0.7rem;
+        color: var(--muted);
+        font: 500 0.62rem/1 var(--text);
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+      }
+      .nav {
+        display: flex;
+        gap: clamp(1.4rem, 3.5vw, 2.8rem);
+      }
+      .nav a {
+        position: relative;
+        padding-block: 0.4rem;
+        font: 400 0.64rem/1 var(--text);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--soft);
+        transition: color 0.4s;
+      }
+      .nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background: var(--ink);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.6s var(--ease);
+      }
+      .nav a:hover {
+        color: var(--ink);
+      }
+      .nav a:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
 
-      document.getElementById("year").textContent = String(new Date().getFullYear());
-    })();
-  </script>
-</body>
+      /* ---------- Inicio ---------- */
+      .hero {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        padding-block: clamp(6rem, 15vw, 13rem) clamp(5rem, 9vw, 8rem);
+        background: radial-gradient(
+          60rem 38rem at 85% -10%,
+          rgba(157, 182, 218, 0.07),
+          transparent 65%
+        );
+      }
+      .hero::before,
+      .hero::after {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+        pointer-events: none;
+      }
+      .hero::before {
+        opacity: 0.82;
+        background-image:
+          radial-gradient(
+            2px 2px at 8% 21%,
+            rgba(209, 185, 138, 0.78) 50%,
+            transparent 100%
+          ),
+          radial-gradient(
+            1.5px 1.5px at 27% 68%,
+            rgba(157, 182, 218, 0.72) 50%,
+            transparent 100%
+          ),
+          radial-gradient(
+            2px 2px at 48% 34%,
+            rgba(209, 185, 138, 0.72) 50%,
+            transparent 100%
+          ),
+          radial-gradient(
+            1.5px 1.5px at 69% 76%,
+            rgba(157, 182, 218, 0.68) 50%,
+            transparent 100%
+          ),
+          radial-gradient(
+            2px 2px at 91% 19%,
+            rgba(209, 185, 138, 0.76) 50%,
+            transparent 100%
+          );
+        background-size: 540px 390px;
+        animation: stars-drift 40s linear infinite;
+      }
+      .hero::after {
+        opacity: 0.6;
+        background-image:
+          radial-gradient(
+            1.5px 1.5px at 17% 83%,
+            rgba(157, 182, 218, 0.76) 50%,
+            transparent 100%
+          ),
+          radial-gradient(
+            2px 2px at 39% 13%,
+            rgba(209, 185, 138, 0.74) 50%,
+            transparent 100%
+          ),
+          radial-gradient(
+            1.5px 1.5px at 76% 42%,
+            rgba(157, 182, 218, 0.78) 50%,
+            transparent 100%
+          ),
+          radial-gradient(
+            2px 2px at 96% 71%,
+            rgba(209, 185, 138, 0.7) 50%,
+            transparent 100%
+          );
+        background-size: 680px 470px;
+        animation: stars-twinkle 5s ease-in-out infinite alternate;
+      }
+      .hero > .wrap {
+        position: relative;
+        z-index: 1;
+      }
+      @keyframes stars-drift {
+        to {
+          background-position: 0 390px;
+        }
+      }
+      @keyframes stars-twinkle {
+        0%,
+        100% {
+          opacity: 0.32;
+        }
+        50% {
+          opacity: 0.72;
+        }
+      }
+      .hero .label {
+        color: var(--accent);
+      }
+      .hero h1 {
+        margin-top: 2rem;
+        font-size: clamp(2.6rem, 8.4vw, 7.6rem);
+        line-height: 1.02;
+        letter-spacing: -0.025em;
+        font-weight: 400;
+      }
+      .ln {
+        display: block;
+        overflow: hidden;
+        padding-bottom: 0.14em;
+        margin-bottom: -0.14em;
+      }
+      .ln > span {
+        display: block;
+      }
+      .hero .lead {
+        margin-top: clamp(2rem, 4vw, 3.2rem);
+        font-size: 1.02rem;
+      }
+      .cta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1.6rem 2.4rem;
+        margin-top: clamp(2rem, 4vw, 3rem);
+      }
+      .hero-rule {
+        height: 1px;
+        margin-top: clamp(4rem, 9vw, 8rem);
+        background: var(--line-strong);
+        transform-origin: left;
+      }
+      .facts {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 2rem clamp(1.5rem, 4vw, 4rem);
+        padding-top: 2rem;
+      }
+      .facts div {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: baseline;
+        gap: 0.3rem 1.2rem;
+      }
+      .facts dt {
+        font: 400 clamp(2.3rem, 4vw, 3.3rem)/1 var(--serif);
+        color: var(--accent2);
+        font-variant-numeric: lining-nums;
+      }
+      .facts dd {
+        font-size: 0.8rem;
+        line-height: 1.6;
+        color: var(--soft);
+        max-width: 15rem;
+      }
+      .js .stg {
+        opacity: 0;
+        transform: translateY(14px);
+        transition:
+          opacity 1.2s var(--ease) var(--d, 0s),
+          transform 1.2s var(--ease) var(--d, 0s);
+      }
+      .js .ln > span {
+        transform: translateY(112%);
+        transition: transform 1.9s var(--ease) var(--d, 0s);
+      }
+      .js .hero-rule {
+        transform: scaleX(0);
+        transition: transform 2s var(--ease) 1s;
+      }
+      .js .hero.go .stg {
+        opacity: 1;
+        transform: none;
+      }
+      .js .hero.go .ln > span {
+        transform: none;
+      }
+      .js .hero.go .hero-rule {
+        transform: none;
+      }
+
+      /* ---------- Principios ---------- */
+      .principles {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 3rem clamp(1.5rem, 4vw, 4rem);
+        margin-top: clamp(4rem, 8vw, 7rem);
+      }
+      .pr {
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--line);
+      }
+      .pr h3 {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+      }
+      .pr p {
+        color: var(--soft);
+        font-size: 0.88rem;
+      }
+
+      /* ---------- Coberturas ---------- */
+      .cov {
+        margin-top: clamp(2.5rem, 5vw, 4rem);
+        border-bottom: 1px solid var(--line);
+      }
+      .cov a {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) 1.5rem;
+        align-items: baseline;
+        gap: 0.6rem clamp(1.5rem, 4vw, 3rem);
+        padding-block: clamp(1.8rem, 3.2vw, 2.6rem);
+        border-top: 1px solid var(--line);
+      }
+      .cov h3 {
+        font-size: clamp(2rem, 3.9vw, 3.3rem);
+        transition:
+          transform 0.8s var(--ease),
+          color 0.5s;
+      }
+      .cov p {
+        color: var(--soft);
+        font-size: 0.84rem;
+        line-height: 1.7;
+      }
+      .cov svg {
+        width: 1.3rem;
+        height: 1.3rem;
+        justify-self: end;
+        align-self: center;
+        opacity: 0.3;
+        transform: translateX(-8px);
+        transition:
+          opacity 0.5s,
+          transform 0.8s var(--ease),
+          color 0.5s;
+      }
+      .cov a:hover h3,
+      .cov a:focus-visible h3 {
+        transform: translateX(0.9rem);
+        color: var(--accent);
+      }
+      .cov a:hover svg,
+      .cov a:focus-visible svg {
+        opacity: 1;
+        transform: none;
+        color: var(--accent);
+      }
+
+      /* ---------- Planes ---------- */
+      .plans {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 3.5rem clamp(1.5rem, 4vw, 4rem);
+        margin-top: clamp(3rem, 6vw, 5rem);
+      }
+      .plan {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 1.1rem;
+        padding-top: 1.6rem;
+        border-top: 1px solid var(--line);
+      }
+      .plan::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -1px;
+        height: 1px;
+        background: var(--ink);
+        transform-origin: left;
+        transition: transform 1.8s var(--ease) var(--d, 0s);
+      }
+      .js .plan:not(.in)::before {
+        transform: scaleX(0);
+      }
+      .plan.pick::before {
+        background: var(--accent);
+        box-shadow: 0 0 18px rgba(209, 185, 138, 0.4);
+      }
+      .plan.pick .label {
+        color: var(--accent);
+      }
+      .plan h3 {
+        font-size: clamp(2.3rem, 3.4vw, 3rem);
+      }
+      .plan .sub {
+        color: var(--soft);
+        font-size: 0.88rem;
+        line-height: 1.7;
+      }
+      .plan ul {
+        display: grid;
+        gap: 0.75rem;
+        margin-top: 0.6rem;
+        padding-top: 1.4rem;
+        border-top: 1px solid var(--line);
+      }
+      .plan li {
+        position: relative;
+        padding-left: 1.7rem;
+        font-size: 0.84rem;
+        line-height: 1.65;
+      }
+      .plan li::before {
+        content: "";
+        position: absolute;
+        left: 0.1rem;
+        top: 0.55em;
+        width: 0.62rem;
+        height: 0.3rem;
+        border-left: 1px solid var(--accent2);
+        border-bottom: 1px solid var(--accent2);
+        transform: rotate(-45deg);
+      }
+      .plan li.inherit {
+        color: var(--muted);
+        font-style: italic;
+      }
+      .plan .plan-cta {
+        margin-top: auto;
+        padding-top: 1.6rem;
+      }
+
+      /* ---------- Asistencia 24/7 ---------- */
+      .assist {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: 2.5rem clamp(2rem, 6vw, 6rem);
+        margin-top: clamp(4.5rem, 9vw, 8rem);
+        padding-top: 2.6rem;
+        border-top: 1px solid var(--line-strong);
+      }
+      .assist h3 {
+        margin-top: 1.2rem;
+        font-size: clamp(1.9rem, 3vw, 2.6rem);
+      }
+      .assist .lead {
+        margin-top: 1.2rem;
+        font-size: 0.88rem;
+      }
+      .svc {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0 2rem;
+        align-content: start;
+      }
+      .svc li {
+        padding-block: 1rem;
+        border-top: 1px solid var(--line);
+        font: 400 1.3rem/1.3 var(--serif);
+      }
+
+      /* ---------- Referencias de precio y notas ---------- */
+      .avg {
+        display: block;
+        margin-top: 0.6rem;
+        font-size: 0.74rem;
+        font-style: italic;
+        color: var(--muted);
+      }
+      .note {
+        margin-top: 1.8rem;
+        max-width: 40rem;
+        font-size: 0.76rem;
+        line-height: 1.8;
+        color: var(--muted);
+      }
+
+      /* ---------- Metas de servicio ---------- */
+      .goals {
+        margin-top: clamp(2.5rem, 5vw, 4rem);
+        border-bottom: 1px solid var(--line);
+      }
+      .goal {
+        display: grid;
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr);
+        align-items: baseline;
+        gap: 0.5rem clamp(1.5rem, 4vw, 3rem);
+        padding-block: clamp(1.6rem, 3vw, 2.4rem);
+        border-top: 1px solid var(--line);
+      }
+      .goal-t {
+        font: 400 clamp(2.2rem, 4vw, 3.4rem)/1 var(--serif);
+        color: var(--accent2);
+        font-variant-numeric: lining-nums;
+      }
+      .goal h3 {
+        font-size: 1.6rem;
+        margin-bottom: 0.4rem;
+      }
+      .goal p {
+        color: var(--soft);
+        font-size: 0.86rem;
+        line-height: 1.7;
+      }
+
+      /* ---------- Método ---------- */
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 3rem clamp(1.5rem, 4vw, 4rem);
+        margin-top: clamp(3rem, 6vw, 5rem);
+      }
+      .step {
+        position: relative;
+        padding-top: 1.6rem;
+        border-top: 1px solid var(--line);
+      }
+      .step::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -1px;
+        height: 1px;
+        background: var(--ink);
+        transform-origin: left;
+        transition: transform 1.8s var(--ease) var(--d, 0s);
+      }
+      .js .step:not(.in)::before {
+        transform: scaleX(0);
+      }
+      .step .label {
+        display: block;
+        margin-bottom: 1.4rem;
+        color: var(--accent2);
+      }
+      .step h3 {
+        font-size: 2rem;
+        margin-bottom: 0.8rem;
+      }
+      .step p {
+        color: var(--soft);
+        font-size: 0.88rem;
+      }
+
+      /* ---------- Cita ---------- */
+      .quote blockquote,
+      .quote .stmt {
+        font: 400 clamp(1.8rem, 4vw, 3.4rem)/1.2 var(--serif);
+        letter-spacing: -0.02em;
+        max-width: 21em;
+        text-wrap: balance;
+      }
+      .quote figcaption {
+        margin-top: 2.2rem;
+      }
+
+      /* ---------- Contacto ---------- */
+      .contact {
+        border-top: 1px solid var(--line);
+        background: var(--surface);
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+        gap: 3.5rem clamp(2rem, 7vw, 7rem);
+        margin-top: clamp(3rem, 6vw, 5rem);
+      }
+      .details > div {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 0.2rem 1rem;
+        padding-block: 1.3rem;
+        border-top: 1px solid var(--line);
+      }
+      .details > div:last-child {
+        border-bottom: 1px solid var(--line);
+      }
+      .details dt {
+        grid-column: 1 / -1;
+      }
+      .details dd {
+        font: 400 1.4rem/1.3 var(--serif);
+        overflow-wrap: anywhere;
+      }
+      .copy {
+        padding: 0.5rem 0;
+        font: 400 0.6rem/1 var(--text);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--muted);
+        border-bottom: 1px solid transparent;
+        transition:
+          color 0.4s,
+          border-color 0.4s;
+      }
+      .copy:hover {
+        color: var(--accent);
+        border-bottom-color: var(--accent);
+      }
+      .form {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem clamp(1.2rem, 3vw, 2.4rem);
+      }
+      .field {
+        display: grid;
+        align-content: start;
+        gap: 0.2rem;
+      }
+      .field.full {
+        grid-column: 1 / -1;
+      }
+      .field label {
+        font: 400 0.6rem/1.5 var(--text);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        padding: 0.7rem 0 0.8rem;
+        border: 0;
+        border-bottom: 1px solid var(--line-strong);
+        border-radius: 0;
+        background: transparent;
+        color: var(--ink);
+        font: 400 0.95rem/1.5 var(--text);
+        outline: 0;
+        appearance: none;
+        -webkit-appearance: none;
+        transition: border-color 0.5s;
+      }
+      .field textarea {
+        min-height: 6.5rem;
+        resize: vertical;
+      }
+      .field input:focus,
+      .field select:focus,
+      .field textarea:focus {
+        border-bottom-color: var(--accent);
+        box-shadow: 0 1px 0 var(--accent);
+      }
+      .field.invalid input,
+      .field.invalid select {
+        border-bottom-color: var(--err);
+      }
+      .field select option {
+        background: var(--surface);
+        color: var(--ink);
+      }
+      .sel {
+        position: relative;
+      }
+      .sel::after {
+        content: "";
+        position: absolute;
+        right: 0.3rem;
+        top: 50%;
+        width: 0.5rem;
+        height: 0.5rem;
+        margin-top: -0.45rem;
+        border-right: 1px solid currentColor;
+        border-bottom: 1px solid currentColor;
+        transform: rotate(45deg);
+        pointer-events: none;
+        color: var(--muted);
+      }
+      .err {
+        min-height: 1.2rem;
+        font-size: 0.8rem;
+        line-height: 1.4;
+        color: var(--err);
+      }
+      .form-foot {
+        grid-column: 1 / -1;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.2rem 2rem;
+      }
+      .form-foot small {
+        max-width: 21rem;
+        font-size: 0.8rem;
+        line-height: 1.6;
+        color: var(--muted);
+      }
+      .ok {
+        display: grid;
+        gap: 1.2rem;
+        justify-items: start;
+        padding-block: 0.5rem;
+      }
+      .ok svg {
+        width: 3.4rem;
+        height: 3.4rem;
+      }
+      .ok circle,
+      .ok path {
+        fill: none;
+        stroke: var(--accent);
+        stroke-width: 1.2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+      }
+      .ok.play circle {
+        animation: draw 1.3s var(--ease) forwards;
+      }
+      .ok.play path {
+        animation: draw 1s var(--ease) 0.6s forwards;
+      }
+      .ok h3 {
+        font-size: 2.5rem;
+        outline: 0;
+      }
+      .ok p {
+        color: var(--soft);
+        max-width: 26rem;
+      }
+      @keyframes draw {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+
+      /* ---------- Pie ---------- */
+      .foot {
+        border-top: 1px solid var(--line);
+        padding-block: 3rem;
+      }
+      .foot-in {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1.5rem 3rem;
+      }
+      .foot p {
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+      .foot nav {
+        display: flex;
+        gap: 1.8rem;
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+      .foot nav a:hover {
+        color: var(--ink);
+      }
+
+      /* ---------- Responsive ---------- */
+      @media (max-width: 900px) {
+        .row,
+        .contact-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .principles,
+        .steps,
+        .plans,
+        .assist,
+        .goal {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .facts {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .cov a {
+          grid-template-columns: minmax(0, 1fr) 1.5rem;
+        }
+        .cov p {
+          grid-column: 1;
+          grid-row: 2;
+        }
+        .cov svg {
+          grid-column: 2;
+          grid-row: 1;
+          opacity: 0.5;
+          transform: none;
+        }
+      }
+      @media (max-width: 640px) {
+        .nav a:not(.keep) {
+          display: none;
+        }
+        .form,
+        .svc {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .hdr-in {
+          padding-block: 1rem;
+        }
+      }
+
+      /* ---------- Pantalla de carga ---------- */
+      .preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 300;
+        display: grid;
+        place-items: center;
+        animation: plSafe 0.01s linear 5s forwards;
+      }
+      html:not(.js) .preloader {
+        display: none;
+      }
+      .pl-panel {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 50.3%;
+        background: var(--bg);
+        transition: transform 1.3s var(--ease);
+      }
+      .pl-top {
+        top: 0;
+      }
+      .pl-bot {
+        bottom: 0;
+      }
+      .pl-core {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        justify-items: center;
+        gap: 0.9rem;
+        padding-inline: 1rem;
+        transition:
+          opacity 0.6s,
+          transform 1s var(--ease);
+      }
+      .pl-bar {
+        width: 11rem;
+        max-width: 70vw;
+        height: 1px;
+        margin-top: 1.1rem;
+        background: var(--line);
+        overflow: hidden;
+      }
+      .pl-bar i {
+        display: block;
+        height: 100%;
+        background: var(--accent);
+        transform-origin: left;
+        transform: scaleX(0);
+        animation: plBar 2.1s var(--ease) 0.2s forwards;
+      }
+      .preloader.done {
+        pointer-events: none;
+        visibility: hidden;
+        transition: visibility 0s linear 1.4s;
+      }
+      .preloader.done .pl-top {
+        transform: translateY(-101%);
+      }
+      .preloader.done .pl-bot {
+        transform: translateY(101%);
+      }
+      .preloader.done .pl-core {
+        opacity: 0;
+        transform: scale(0.96);
+      }
+      @keyframes plBar {
+        to {
+          transform: scaleX(1);
+        }
+      }
+      @keyframes plSafe {
+        to {
+          visibility: hidden;
+        }
+      }
+
+      /* ---------- Movimiento reducido ---------- */
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition-duration: 0.01ms !important;
+          transition-delay: 0s !important;
+        }
+        .ok circle,
+        .ok path {
+          stroke-dashoffset: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#contenido">Saltar al contenido</a>
+
+    <div class="preloader" aria-hidden="true">
+      <div class="pl-panel pl-top"></div>
+      <div class="pl-panel pl-bot"></div>
+      <div class="pl-core">
+        <div class="pl-bar"><i></i></div>
+      </div>
+    </div>
+
+    <header class="hdr" id="hdr">
+      <div class="wrap hdr-in">
+        <a
+          class="mark"
+          href="#inicio"
+          aria-label="PrimeTrust Insurance, ir al inicio"
+        >
+          PrimeTrust<small>Insurance</small>
+        </a>
+        <nav class="nav" aria-label="Principal">
+          <a href="#seguros">Seguros</a>
+          <a href="#planes">Planes</a>
+          <a href="#servicio">Servicio</a>
+          <a class="keep" href="#contacto">Contacto</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="contenido">
+      <!-- ========== INICIO ========== -->
+      <section class="hero" id="inicio" aria-labelledby="h1">
+        <div class="wrap">
+          <p class="label stg" style="--d: 0.1s">
+            Agencia de seguros independiente · Utah
+          </p>
+          <h1 id="h1">
+            <span class="ln"><span style="--d: 0.2s">Seguros que</span></span>
+            <span class="ln"
+              ><span style="--d: 0.34s"><em>entiendes.</em></span></span
+            >
+          </h1>
+          <p class="lead stg" style="--d: 0.85s">
+            Comparamos varias aseguradoras, te explicamos cada cobertura y cada
+            exclusión antes de vender, y te acompañamos si algo sale mal. En
+            español e inglés.
+          </p>
+          <div class="cta stg" style="--d: 1s">
+            <a class="btn" href="#contacto"
+              >Pedir una cotización
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.4"
+                aria-hidden="true"
+              >
+                <path d="M4 12h16M14 6l6 6-6 6" /></svg
+            ></a>
+            <a class="link" href="#seguros">Ver seguros</a>
+          </div>
+          <div class="hero-rule" aria-hidden="true"></div>
+          <dl class="facts stg" style="--d: 1.5s">
+            <div>
+              <dt>10 min</dt>
+              <dd>Tiempo máximo para tu cotización</dd>
+            </div>
+            <div>
+              <dt>24 h</dt>
+              <dd>Para emitir tu póliza una vez aprobada</dd>
+            </div>
+            <div>
+              <dt>1 h</dt>
+              <dd>Para el primer contacto tras un siniestro</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- ========== NOSOTROS ========== -->
+      <section class="section" id="nosotros" aria-labelledby="nosTitle">
+        <div class="wrap">
+          <div class="row">
+            <p class="label rv">Nosotros</p>
+            <div>
+              <h2
+                id="nosTitle"
+                style="
+                  position: absolute;
+                  width: 1px;
+                  height: 1px;
+                  overflow: hidden;
+                  clip: rect(0 0 0 0);
+                  white-space: nowrap;
+                "
+              >
+                Cómo pensamos los seguros
+              </h2>
+              <p class="big rv" style="--d: 0.1s">
+                Competimos por confianza, no por precio. Compras lo que
+                entiendes y
+                <em>sabes que estamos contigo cuando algo sale mal.</em>
+              </p>
+            </div>
+          </div>
+          <div class="principles">
+            <div class="pr rv">
+              <h3>Confianza</h3>
+              <p>
+                Explicamos cada cobertura y cada exclusión antes de vender, y te
+                lo entregamos por escrito.
+              </p>
+            </div>
+            <div class="pr rv" style="--d: 0.1s">
+              <h3>Transparencia</h3>
+              <p>
+                Te mostramos varias opciones y te decimos cuál conviene y por
+                qué, aunque no sea la más cara.
+              </p>
+            </div>
+            <div class="pr rv" style="--d: 0.2s">
+              <h3>Cercanía</h3>
+              <p>
+                Un asesor con nombre propio para ti, que conoce tu caso y
+                responde por él.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== SEGUROS ========== -->
+      <section
+        class="section"
+        id="seguros"
+        aria-labelledby="segTitle"
+        style="padding-top: 0"
+      >
+        <div class="wrap">
+          <div class="row">
+            <p class="label rv">Seguros</p>
+            <div>
+              <h2 class="rv" id="segTitle">
+                Cuatro líneas, <em>un solo asesor.</em>
+              </h2>
+              <ul class="cov">
+                <li class="rv">
+                  <a href="#contacto" data-cov="Auto"
+                    ><h3>Auto</h3>
+                    <p>
+                      Responsabilidad civil, protección por lesiones, daños
+                      propios, robo y asistencia vial.<span class="avg"
+                        >Promedio en Utah: USD 2,200 al año en cobertura
+                        completa</span
+                      >
+                    </p>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.3"
+                      aria-hidden="true"
+                    >
+                      <path d="M4 12h16M14 6l6 6-6 6" /></svg
+                  ></a>
+                </li>
+                <li class="rv">
+                  <a href="#contacto" data-cov="Hogar"
+                    ><h3>Hogar</h3>
+                    <p>
+                      Vivienda, contenido, responsabilidad, robo y daños por
+                      agua.<span class="avg"
+                        >Promedio en Utah: USD 1,800 al año</span
+                      >
+                    </p>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.3"
+                      aria-hidden="true"
+                    >
+                      <path d="M4 12h16M14 6l6 6-6 6" /></svg
+                  ></a>
+                </li>
+                <li class="rv">
+                  <a href="#contacto" data-cov="Vida a término"
+                    ><h3>Vida a término</h3>
+                    <p>
+                      Protección por fallecimiento a 20 años, con opciones de
+                      invalidez y enfermedad grave.<span class="avg"
+                        >Promedio en Utah: USD 640 al año por USD 500,000 de
+                        cobertura</span
+                      >
+                    </p>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.3"
+                      aria-hidden="true"
+                    >
+                      <path d="M4 12h16M14 6l6 6-6 6" /></svg
+                  ></a>
+                </li>
+                <li class="rv">
+                  <a href="#contacto" data-cov="Negocio (BOP)"
+                    ><h3>Negocio</h3>
+                    <p>
+                      Seguro de negocio (BOP): local, equipo, inventario,
+                      responsabilidad civil e interrupción del negocio.<span
+                        class="avg"
+                        >Promedio en Utah: USD 1,250 al año</span
+                      >
+                    </p>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.3"
+                      aria-hidden="true"
+                    >
+                      <path d="M4 12h16M14 6l6 6-6 6" /></svg
+                  ></a>
+                </li>
+              </ul>
+              <p class="note rv">
+                Los promedios son referencias públicas de 2026 y no son una
+                oferta. Tu cotización depende de tu caso.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== PLANES ========== -->
+      <section
+        class="section"
+        id="planes"
+        aria-labelledby="plaTitle"
+        style="padding-top: 0"
+      >
+        <div class="wrap">
+          <div class="row">
+            <p class="label rv">Planes y paquetes</p>
+            <div>
+              <h2 class="rv" id="plaTitle">
+                Elige cómo <em>proteger lo tuyo.</em>
+              </h2>
+              <p class="lead rv" style="margin-top: 1.4rem; --d: 0.1s">
+                Tres puntos de partida. Los ajustamos contigo y comparamos
+                aseguradoras antes de recomendarte uno.
+              </p>
+            </div>
+          </div>
+
+          <div class="plans">
+            <article class="plan rv">
+              <p class="label">Para conductores</p>
+              <h3>Auto</h3>
+              <p class="sub">
+                Cumple la ley de Utah y cubre lo que más duele: daños y robo.
+              </p>
+              <ul>
+                <li>Responsabilidad civil 25/65/15, el mínimo legal en Utah</li>
+                <li>Protección por lesiones (PIP) de USD 3,000</li>
+                <li>Daños propios y robo</li>
+                <li>Asistencia vial</li>
+              </ul>
+              <div class="plan-cta">
+                <a class="link" href="#contacto" data-plan="Auto"
+                  >Pedir cotización</a
+                >
+              </div>
+            </article>
+
+            <article class="plan pick rv" style="--d: 0.12s">
+              <p class="label">Más elegido</p>
+              <h3>Paquete Familia</h3>
+              <p class="sub">
+                Protege el ingreso y el patrimonio de tu familia con un solo
+                asesor.
+              </p>
+              <ul>
+                <li>Auto, hogar y vida a término en un solo paquete</li>
+                <li>Descuento por varias pólizas, según cada aseguradora</li>
+                <li>Vida a término de 20 años por USD 500,000</li>
+                <li>Revisión anual de todo junto</li>
+              </ul>
+              <div class="plan-cta">
+                <a class="link" href="#contacto" data-plan="Paquete Familia"
+                  >Pedir cotización</a
+                >
+              </div>
+            </article>
+
+            <article class="plan rv" style="--d: 0.24s">
+              <p class="label">Para tu empresa</p>
+              <h3>Negocio Seguro</h3>
+              <p class="sub">
+                Para negocios de 2 a 50 empleados que no pueden parar.
+              </p>
+              <ul>
+                <li>
+                  Seguro de negocio (BOP): local, equipo, inventario y
+                  responsabilidad civil
+                </li>
+                <li>Interrupción del negocio</li>
+                <li>
+                  Compensación laboral, obligatoria si tienes empleados en Utah
+                </li>
+                <li>Auto comercial</li>
+              </ul>
+              <div class="plan-cta">
+                <a
+                  class="link"
+                  href="#contacto"
+                  data-plan="Paquete Negocio Seguro"
+                  >Pedir cotización</a
+                >
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== ANTES DE FIRMAR ========== -->
+      <section
+        class="section"
+        id="antes"
+        aria-labelledby="antTitle"
+        style="padding-top: 0"
+      >
+        <div class="wrap">
+          <div class="row">
+            <p class="label rv">Antes de firmar</p>
+            <h2 class="rv" id="antTitle">
+              Lo que conviene saber <em>antes de contratar.</em>
+            </h2>
+          </div>
+          <div class="principles">
+            <div class="pr rv">
+              <h3>Sismo e inundación</h3>
+              <p>
+                No entran en una póliza de hogar estándar. Son seguros aparte, y
+                te decimos si los necesitas.
+              </p>
+            </div>
+            <div class="pr rv" style="--d: 0.1s">
+              <h3>Incendio forestal</h3>
+              <p>
+                Pesa en varias zonas de Utah. Revisamos dónde vives y qué cubre
+                tu póliza antes de que haga falta.
+              </p>
+            </div>
+            <div class="pr rv" style="--d: 0.2s">
+              <h3>Compensación laboral</h3>
+              <p>
+                Es obligatoria para negocios con empleados en Utah y va aparte
+                del seguro de negocio (BOP).
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== SERVICIO ========== -->
+      <section
+        class="section"
+        id="servicio"
+        aria-labelledby="serTitle"
+        style="padding-top: 0"
+      >
+        <div class="wrap">
+          <div class="row">
+            <p class="label rv">Nuestro servicio</p>
+            <div>
+              <h2 class="rv" id="serTitle">
+                Seis momentos, <em>cada uno con su tiempo.</em>
+              </h2>
+              <p class="lead rv" style="margin-top: 1.4rem; --d: 0.1s">
+                Estas son nuestras metas de servicio. Las medimos cada semana.
+              </p>
+              <ol class="goals">
+                <li class="goal rv">
+                  <span class="goal-t">10 min</span>
+                  <div>
+                    <h3>Cotización</h3>
+                    <p>Tu cotización con un asesor, en menos de 10 minutos.</p>
+                  </div>
+                </li>
+                <li class="goal rv">
+                  <span class="goal-t">24 h</span>
+                  <div>
+                    <h3>Emisión</h3>
+                    <p>Tu póliza emitida en 24 horas desde la aprobación.</p>
+                  </div>
+                </li>
+                <li class="goal rv">
+                  <span class="goal-t">7 días</span>
+                  <div>
+                    <h3>Cobro</h3>
+                    <p>
+                      Pago digital y un recordatorio 7 días antes del
+                      vencimiento.
+                    </p>
+                  </div>
+                </li>
+                <li class="goal rv">
+                  <span class="goal-t">1 h</span>
+                  <div>
+                    <h3>Siniestro</h3>
+                    <p>
+                      Atención las 24 horas y primer contacto en menos de una
+                      hora.
+                    </p>
+                  </div>
+                </li>
+                <li class="goal rv">
+                  <span class="goal-t">72 h</span>
+                  <div>
+                    <h3>Seguimiento</h3>
+                    <p>
+                      Un aviso del avance de tu reclamo cada 72 horas, hasta
+                      cerrarlo.
+                    </p>
+                  </div>
+                </li>
+                <li class="goal rv">
+                  <span class="goal-t">45 días</span>
+                  <div>
+                    <h3>Renovación</h3>
+                    <p>
+                      Revisamos tus coberturas 45 días antes del vencimiento
+                      para ajustarlas y bajar costos.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== DIFERENCIA ========== -->
+      <section
+        class="section quote"
+        aria-label="Por qué una agencia independiente"
+        style="padding-top: 0"
+      >
+        <div class="wrap">
+          <figure class="rv">
+            <p class="stmt">
+              Un agente de una sola aseguradora vende lo suyo. Un comparador te
+              muestra precios y desaparece.
+              <em>Nosotros comparamos, recomendamos y nos quedamos.</em>
+            </p>
+            <figcaption class="label">
+              Agencia independiente, en español e inglés
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ========== CONTACTO ========== -->
+      <section class="section contact" id="contacto" aria-labelledby="conTitle">
+        <div class="wrap">
+          <div class="row">
+            <p class="label rv">Contacto</p>
+            <h2 class="rv" id="conTitle">
+              Cuéntanos qué quieres <em>proteger.</em>
+            </h2>
+          </div>
+          <div class="contact-grid">
+            <dl class="details rv">
+              <div>
+                <dt class="label">Teléfono y WhatsApp</dt>
+                <dd id="cPhone">(801) 555-0142</dd>
+                <button class="copy" type="button" data-copy="#cPhone">
+                  Copiar
+                </button>
+              </div>
+              <div>
+                <dt class="label">Correo</dt>
+                <dd id="cMail">hola@primetrust.example</dd>
+                <button class="copy" type="button" data-copy="#cMail">
+                  Copiar
+                </button>
+              </div>
+              <div>
+                <dt class="label">Siniestros</dt>
+                <dd>24 horas, todos los días</dd>
+              </div>
+              <div>
+                <dt class="label">Idiomas</dt>
+                <dd>Español e inglés</dd>
+              </div>
+            </dl>
+            <div class="rv" style="--d: 0.12s">
+              <form class="form" id="form" novalidate>
+                <div class="field">
+                  <label for="f-nombre">Nombre</label>
+                  <input
+                    id="f-nombre"
+                    name="nombre"
+                    type="text"
+                    autocomplete="name"
+                    required
+                    aria-describedby="e-nombre"
+                  />
+                  <span class="err" id="e-nombre" role="alert"></span>
+                </div>
+                <div class="field">
+                  <label for="f-correo">Correo</label>
+                  <input
+                    id="f-correo"
+                    name="correo"
+                    type="email"
+                    autocomplete="email"
+                    required
+                    aria-describedby="e-correo"
+                  />
+                  <span class="err" id="e-correo" role="alert"></span>
+                </div>
+                <div class="field">
+                  <label for="f-tel">Teléfono (opcional)</label>
+                  <input
+                    id="f-tel"
+                    name="telefono"
+                    type="tel"
+                    autocomplete="tel"
+                    aria-describedby="e-tel"
+                  />
+                  <span class="err" id="e-tel" role="alert"></span>
+                </div>
+                <div class="field">
+                  <label for="f-tipo">Seguro</label>
+                  <div class="sel">
+                    <select
+                      id="f-tipo"
+                      name="tipo"
+                      required
+                      aria-describedby="e-tipo"
+                    >
+                      <option value="">Elige uno</option>
+                      <option value="Auto">Auto</option>
+                      <option value="Hogar">Hogar</option>
+                      <option value="Vida a término">Vida a término</option>
+                      <option value="Negocio (BOP)">Negocio (BOP)</option>
+                      <option value="Paquete Familia">Paquete Familia</option>
+                      <option value="Paquete Negocio Seguro">
+                        Paquete Negocio Seguro
+                      </option>
+                      <option value="Aún no lo sé">Aún no lo sé</option>
+                    </select>
+                  </div>
+                  <span class="err" id="e-tipo" role="alert"></span>
+                </div>
+                <div class="field full">
+                  <label for="f-msg">Mensaje (opcional)</label>
+                  <textarea id="f-msg" name="mensaje" rows="3"></textarea>
+                </div>
+                <div class="form-foot">
+                  <small
+                    >Usamos tus datos solo para responderte. No los compartimos
+                    con nadie.</small
+                  >
+                  <button class="btn" type="submit">
+                    Enviar
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.4"
+                      aria-hidden="true"
+                    >
+                      <path d="M4 12h16M14 6l6 6-6 6" />
+                    </svg>
+                  </button>
+                </div>
+              </form>
+              <div class="ok" id="ok" hidden>
+                <svg viewBox="0 0 56 56" aria-hidden="true">
+                  <circle cx="28" cy="28" r="25" pathLength="1" />
+                  <path d="M17 29 L25 37 L40 20" pathLength="1" />
+                </svg>
+                <h3 id="okTitle" tabindex="-1">Gracias.</h3>
+                <p>
+                  Esta página es una demostración, así que tu mensaje no se
+                  envió. En la versión publicada, un asesor de PrimeTrust te
+                  respondería con tu cotización.
+                </p>
+                <button class="link" type="button" id="okReset">
+                  Enviar otro mensaje
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="wrap">
+        <div class="foot-in">
+          <p>© <span id="year">2026</span> PrimeTrust Insurance</p>
+          <nav aria-label="Legal">
+            <a href="#" data-nolink>Aviso legal</a
+            ><a href="#" data-nolink>Privacidad</a>
+          </nav>
+        </div>
+        <p class="note">
+          Los promedios de precio son referencias públicas de 2026 y no
+          constituyen una oferta. Cada póliza tiene condiciones y exclusiones
+          que te explicamos por escrito antes de contratar. Sitio de
+          demostración.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        "use strict";
+        window.__karla = 1;
+        var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+        function $(s, c) {
+          return (c || document).querySelector(s);
+        }
+        function $$(s, c) {
+          return Array.prototype.slice.call(
+            (c || document).querySelectorAll(s),
+          );
+        }
+
+        $("#year").textContent = new Date().getFullYear();
+        $$("[data-nolink]").forEach(function (a) {
+          a.addEventListener("click", function (e) {
+            e.preventDefault();
+          });
+        });
+
+        /* ---------- Pantalla de carga y apertura del titular ---------- */
+        var hero = $(".hero"),
+          pl = $(".preloader"),
+          t0 = performance.now(),
+          started = false,
+          loaded = false;
+        function startHero() {
+          if (started) return;
+          started = true;
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              hero.classList.add("go");
+            });
+          });
+        }
+        function finishLoad() {
+          if (loaded) return;
+          loaded = true;
+          var wait = Math.max(0, 2400 - (performance.now() - t0));
+          setTimeout(function () {
+            if (pl) pl.classList.add("done");
+            setTimeout(startHero, 450);
+            setTimeout(function () {
+              if (pl && pl.parentNode) pl.parentNode.removeChild(pl);
+            }, 1800);
+          }, wait);
+        }
+        if (!document.documentElement.classList.contains("js") || !pl) {
+          startHero();
+        } else {
+          var fontsReady =
+            document.fonts && document.fonts.ready
+              ? document.fonts.ready
+              : Promise.resolve();
+          fontsReady.then(function () {
+            if (document.readyState === "complete") finishLoad();
+            else addEventListener("load", finishLoad);
+          });
+          setTimeout(finishLoad, 4000);
+        }
+
+        /* ---------- Revelado al hacer scroll ---------- */
+        var items = $$(".rv");
+        if ("IntersectionObserver" in window) {
+          var io = new IntersectionObserver(
+            function (es) {
+              es.forEach(function (e) {
+                if (e.isIntersecting) {
+                  e.target.classList.add("in");
+                  io.unobserve(e.target);
+                }
+              });
+            },
+            { threshold: 0.15, rootMargin: "0px 0px -5% 0px" },
+          );
+          items.forEach(function (el) {
+            io.observe(el);
+          });
+        } else {
+          items.forEach(function (el) {
+            el.classList.add("in");
+          });
+        }
+
+        /* ---------- Cabecera ---------- */
+        var hdr = $("#hdr");
+        function onScroll() {
+          hdr.classList.toggle("scrolled", (window.scrollY || 0) > 8);
+        }
+        addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+
+        /* ---------- Una cobertura elegida llena el formulario ---------- */
+        $$("[data-cov]").forEach(function (a) {
+          a.addEventListener("click", function () {
+            var sel = $("#f-tipo");
+            sel.value = a.getAttribute("data-cov");
+            clearErr(sel);
+          });
+        });
+
+        /* ---------- Un plan elegido llena el formulario ---------- */
+        $$("[data-plan]").forEach(function (a) {
+          a.addEventListener("click", function () {
+            var sel = $("#f-tipo"),
+              msg = $("#f-msg"),
+              plan = a.getAttribute("data-plan");
+            sel.value = plan;
+            clearErr(sel);
+            if (!msg.value.trim() || /^Me interesa: /.test(msg.value)) {
+              msg.value = "Me interesa: " + plan + ".";
+            }
+          });
+        });
+
+        /* ---------- Copiar datos de contacto ---------- */
+        $$("[data-copy]").forEach(function (b) {
+          b.addEventListener("click", function () {
+            var src = $(b.getAttribute("data-copy")),
+              txt = src.textContent.trim(),
+              old = b.textContent;
+            function done(ok) {
+              b.textContent = ok ? "Copiado" : "Seleccionado";
+              setTimeout(function () {
+                b.textContent = old;
+              }, 1800);
+            }
+            function fallback() {
+              var r = document.createRange();
+              r.selectNodeContents(src);
+              var s = getSelection();
+              s.removeAllRanges();
+              s.addRange(r);
+              done(false);
+            }
+            try {
+              navigator.clipboard.writeText(txt).then(function () {
+                done(true);
+              }, fallback);
+            } catch (e) {
+              fallback();
+            }
+          });
+        });
+
+        /* ---------- Formulario ---------- */
+        var f = $("#form"),
+          ok = $("#ok");
+        var rules = {
+          "f-nombre": function (v) {
+            return v.trim().length < 2 ? "Escribe tu nombre." : "";
+          },
+          "f-correo": function (v) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim())
+              ? ""
+              : "Escribe un correo válido, por ejemplo nombre@correo.com.";
+          },
+          "f-tel": function (v) {
+            return v.trim() && v.replace(/\D/g, "").length < 7
+              ? "Escribe un teléfono con al menos 7 dígitos."
+              : "";
+          },
+          "f-tipo": function (v) {
+            return v ? "" : "Elige el seguro que te interesa.";
+          },
+        };
+        function check(el) {
+          var r = rules[el.id];
+          return r ? r(el.value) : "";
+        }
+        function setErr(el, msg) {
+          var box = el.closest(".field");
+          $(".err", box).textContent = msg || "";
+          box.classList.toggle("invalid", !!msg);
+          el.setAttribute("aria-invalid", msg ? "true" : "false");
+        }
+        function clearErr(el) {
+          setErr(el, "");
+        }
+        $$("input, select, textarea", f).forEach(function (el) {
+          el.addEventListener("input", function () {
+            if (
+              el.closest(".field").classList.contains("invalid") &&
+              !check(el)
+            )
+              clearErr(el);
+          });
+          el.addEventListener("blur", function () {
+            var m = check(el);
+            if (m && el.value) setErr(el, m);
+          });
+        });
+        f.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var first = null;
+          $$("input, select, textarea", f).forEach(function (el) {
+            var m = check(el);
+            setErr(el, m);
+            if (m && !first) first = el;
+          });
+          if (first) {
+            first.focus();
+            return;
+          }
+          var nombre = $("#f-nombre").value.trim().split(/\s+/)[0];
+          $("#okTitle").textContent = "Gracias, " + nombre + ".";
+          f.hidden = true;
+          ok.hidden = false;
+          ok.classList.remove("play");
+          void ok.offsetWidth;
+          ok.classList.add("play");
+          $("#okTitle").focus();
+        });
+        $("#okReset").addEventListener("click", function () {
+          f.reset();
+          $$(".field", f).forEach(function (b) {
+            b.classList.remove("invalid");
+            $(".err", b) && ($(".err", b).textContent = "");
+          });
+          ok.hidden = true;
+          ok.classList.remove("play");
+          f.hidden = false;
+          $("#f-nombre").focus();
+        });
+      })();
+    </script>
+  </body>
 </html>
